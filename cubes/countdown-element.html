@@ -1,0 +1,49 @@
+<polymer-element name="countdown-element">
+
+
+    <template>
+        <style>
+            :host {
+                top: 25;
+                left: 25;
+                min-width: 30px;
+                background-color: white;
+            }
+            div {
+                background: #4285f4;
+                color: #fff;
+                padding: 0.5em 0.57em;
+            }
+            core-menu {
+                padding: 0.5em 0.57em;
+            }
+            paper-item {
+                font-size: 15px;
+                min-width: 100px;
+            }
+            core-item.core-selected {
+                color: red;
+            }
+        </style>
+
+      <div id="countDown">{{count}}</div> 
+    </template>
+    <script>
+    Polymer('countdown-element', {
+        ready: function() {
+          this.nextCount();
+        },
+        
+        nextCount: function(){
+          this.count--;
+          
+          if(this.count > 0){
+            this.async(this.nextCount, null, 1000); 
+          }
+        },
+        
+        count: 60
+      });
+
+    </script>
+  </polymer-element>

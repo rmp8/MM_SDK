@@ -1,0 +1,13 @@
+{
+    "Name": "cubes",
+    "Description": "",
+    "Txml": "scene_original2.txml",
+    "Img": "application.jpg",
+    "SourceDir": "",
+    "SourceWebRocket": "app-web-rocket.webrocketjs",
+    "SourceRocket": "app-server-and-rocket.js",
+    "CompatibleWebRocket": true,
+    "CompatibleRocket": false,
+    "CompatibleServer": true,
+    "Layers": []
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE Scene>
+<scene>
+ <entity id="1" sync="true">
+  <component typeId="26" type="Name" sync="true">
+   <attribute value="env" type="string" id="name" name="Name"/>
+   <attribute value="" type="string" id="description" name="Description"/>
+   <attribute value="" type="string" id="group" name="Group"/>
+  </component>
+  <component typeId="12" type="WaterPlane" sync="true">
+   <attribute value="5000" type="int" id="xSize" name="X-size"/>
+   <attribute value="5000" type="int" id="ySize" name="Y-size"/>
+   <attribute value="10000" type="int" id="depth" name="Depth"/>
+   <attribute value="0.000000 0.000000 0.000000" type="float3" id="position" name="Position"/>
+   <attribute value="0.000000 0.000000 0.000000 1.000000" type="Quat" id="rotation" name="Rotation"/>
+   <attribute value="0.000200" type="real" id="scaleUfactor" name="U factor"/>
+   <attribute value="0.000200" type="real" id="scaleVfactor" name="V factor"/>
+   <attribute value="10" type="int" id="xSegments" name="Segments in x"/>
+   <attribute value="10" type="int" id="ySegments" name="Segments in y"/>
+   <attribute value="" type="string" id="materialName" name="Material"/>
+   <attribute value="Ogre Media:WaterPlane.material" type="AssetReference" id="materialRef" name="Material ref"/>
+   <attribute value="0.200000 0.400000 0.350000 1.000000" type="Color" id="fogColor" name="Fog color"/>
+   <attribute value="100.000000" type="real" id="fogStartDistance" name="Fog start dist."/>
+   <attribute value="2000.000000" type="real" id="fogEndDistance" name="Fog end dist."/>
+   <attribute value="3" type="int" id="fogMode" name="Fog mode"/>
+   <attribute value="0.001000" type="real" id="fogExpDensity" name="Fog exponential density"/>
+  </component>
+  <component typeId="10" type="Sky" sync="true">
+   <attribute value="Ogre Media:RexSkyBox.material" type="AssetReference" id="materialRef" name="Material"/>
+   <attribute value="" type="AssetReferenceList" id="textureRefs" name="Texture"/>
+   <attribute value="999.000000" type="real" id="distance" name="Distance"/>
+   <attribute value="0.000000 0.000000 0.000000 1.000000" type="Quat" id="orientation" name="Orientation"/>
+   <attribute value="true" type="bool" id="drawFirst" name="Draw first"/>
+   <attribute value="true" type="bool" id="enabled" name="Enabled"/>
+  </component>
+ </entity>
+ <entity id="2" sync="true">
+  <component typeId="26" type="Name" sync="true">
+   <attribute value="MyApplication" type="string" id="name" name="Name"/>
+   <attribute value="" type="string" id="description" name="Description"/>
+   <attribute value="" type="string" id="group" name="Group"/>
+  </component>
+  <component typeId="5" type="Script" sync="true" name="webrocket">
+   <attribute value="app-web-rocket.webrocketjs" type="AssetReferenceList" id="scriptRef" name="Script ref"/>
+   <attribute value="true" type="bool" id="runOnLoad" name="Run on load"/>
+   <attribute value="1" type="int" id="runMode" name="Run mode"/>
+   <attribute value="" type="string" id="applicationName" name="Script application name"/>
+   <attribute value="" type="string" id="className" name="Script class name"/>
+  </component>
+  <component typeId="5" type="Script" sync="true">
+   <attribute value="app-server-and-rocket.js" type="AssetReferenceList" id="scriptRef" name="Script ref"/>
+   <attribute value="true" type="bool" id="runOnLoad" name="Run on load"/>
+   <attribute value="0" type="int" id="runMode" name="Run mode"/>
+   <attribute value="" type="string" id="applicationName" name="Script application name"/>
+   <attribute value="" type="string" id="className" name="Script class name"/>
+  </component>
+ </entity>
+ <entity id="3" sync="true">
+  <component temporary="false" typeId="26" type="Name" sync="true">
+   <attribute value="RocketEnvironment" type="string" id="name" name="Name"/>
+   <attribute value="" type="string" id="description" name="Description"/>
+   <attribute value="" type="string" id="group" name="Group"/>
+  </component>
+  <component temporary="false" typeId="8" type="EnvironmentLight" sync="true" name="RocketEnvironmentLight">
+   <attribute value="0.639000 0.639000 0.639000 1.000000" type="Color" id="sunColor" name="Sunlight color"/>
+   <attribute value="0.364000 0.364000 0.364000 1.000000" type="Color" id="ambientColor" name="Ambient light color"/>
+   <attribute value="-1.000000 -1.000000 -1.000000" type="float3" id="sunDirection" name="Sunlight direction vector"/>
+   <attribute value="true" type="bool" id="sunCastShadows" name="Sunlight cast shadows"/>
+   <attribute value="1.000000" type="real" id="brightness" name="Brightness"/>
+  </component>
+ </entity>
+ <!--<entity id="4" sync="true">
+  <component typeId="26" type="Name" sync="true">
+   <attribute value="AdminoAvatarManager" type="string" id="name" name="Name"/>
+   <attribute value="" type="string" id="description" name="Description"/>
+   <attribute value="" type="string" id="group" name="Group"/>
+  </component>
+  <!--<component typeId="5" type="Script" sync="true">
+   <attribute value="http://meshmoon.data.s3.amazonaws.com/app/spinningwire/avatar-manager-deploy.js" type="AssetReferenceList" id="scriptRef" name="Script ref"/>
+   <attribute value="true" type="bool" id="runOnLoad" name="Run on load"/>
+   <attribute value="0" type="int" id="runMode" name="Run mode"/>
+   <attribute value="" type="string" id="applicationName" name="Script application name"/>
+   <attribute value="" type="string" id="className" name="Script class name"/>
+  </component>-->
+  <!--<component typeId="25" type="DynamicComponent" sync="true" name="AdminotechApplicationSettings">
+   <attribute value="Avatar-cube.xml" type="string" id="Forced avatar appearance" name="Forced avatar appearance"/>
+   <attribute value="-90" type="real" id="Spawn rotation" name="Spawn rotation"/>
+   <attribute value="60" type="real" id="Spawn x" name="Spawn x"/>
+   <attribute value="25" type="real" id="Spawn y" name="Spawn y"/>
+   <attribute value="-40" type="real" id="Spawn z" name="Spawn z"/>
+  </component>
+ </entity>-->
+
+ <entity id="168">
+ <component typeId="26" type="Name" sync="true">
+  <attribute value="Avatar1" type="string" id="name" name="Name"/>
+  <attribute value="pirajani" type="string" id="description" name="Description"/>
+  <attribute value="" type="string" id="group" name="Group"/>
+ </component>
+ <component typeId="20" type="Placeable" sync="true">
+  <attribute value="-1.21875,1.1171875,4.921875,0,25.7647038,0,1,1,1" type="Transform" id="transform" name="Transform"/>
+  <attribute value="false" type="bool" id="drawDebug" name="Show bounding box"/>
+  <attribute value="true" type="bool" id="visible" name="Visible"/>
+  <attribute value="1" type="int" id="selectionLayer" name="Selection layer"/>
+  <attribute value="" type="EntityReference" id="parentRef" name="Parent entity ref"/>
+  <attribute value="" type="string" id="parentBone" name="Parent bone name"/>
+ </component>
+ <component typeId="14" type="AnimationController" sync="true">
+  <attribute value="STAND" type="string" id="animationState" name="Animation state"/>
+  <attribute value="false" type="bool" id="drawDebug" name="Draw debug"/>
+ </component>
+ <component typeId="25" type="DynamicComponent" sync="true" name="AdminoAvatarData">
+  <attribute value="pirajani" type="string" id="Username" name="Username"/>
+  <attribute value="" type="string" id="ProfilePicture" name="ProfilePicture"/>
+  <attribute value="" type="string" id="ProfilePage" name="ProfilePage"/>
+  <attribute value="http://meshmoon.data.s3.amazonaws.com/avatars/girl/girl.avatar" type="string" id="AvatarUrl" name="AvatarUrl"/>
+  <attribute value="true" type="bool" id="AppearanceFromLogin" name="AppearanceFromLogin"/>
+  <attribute value="1" type="int" id="ID" name="ID"/>
+  <attribute value="true" type="bool" id="enableWalk" name="enableWalk"/>
+  <attribute value="true" type="bool" id="enableJump" name="enableJump"/>
+  <attribute value="true" type="bool" id="enableRotate" name="enableRotate"/>
+  <attribute value="true" type="bool" id="enableAnimation" name="enableAnimation"/>
+  <attribute value="true" type="bool" id="enableZoom" name="enableZoom"/>
+  <attribute value="true" type="bool" id="enableCamDamping" name="enableCamDamping"/>
+  <attribute value="3.5" type="real" id="cameraDistance" name="cameraDistance"/>
+  <attribute value="3.5" type="real" id="defaultCameraDistance" name="defaultCameraDistance"/>
+  <attribute value="3.5" type="real" id="preferredCameraDistance" name="preferredCameraDistance"/>
+ </component>
+ <component typeId="5" type="Script" sync="true" name="AvatarController">
+  <attribute value="http://meshmoon.s3.amazonaws.com/releases/meshmoon-applications/stable/meshmoon/avatar/avatar-controller.js" type="AssetReferenceList" id="scriptRef" name="Script ref"/>
+  <attribute value="true" type="bool" id="runOnLoad" name="Run on load"/>
+  <attribute value="0" type="int" id="runMode" name="Run mode"/>
+  <attribute value="" type="string" id="applicationName" name="Script application name"/>
+  <attribute value="" type="string" id="className" name="Script class name"/>
+ </component>
+ <component typeId="1" type="Avatar" sync="true" name="AvatarAppearance">
+  <attribute value="http://meshmoon.data.s3.amazonaws.com/avatars/girl/girl.avatar" type="AssetReference" id="appearanceRef" name="Appearance ref"/>
+ </component>
+ <component typeId="23" type="RigidBody" sync="true" name="AvatarPhysics">
+  <attribute value="10" type="real" id="mass" name="Mass"/>
+  <attribute value="3" type="int" id="shapeType" name="Shape type"/>
+  <attribute value="0.5 2.4000001 0.5" type="float3" id="size" name="Size"/>
+  <attribute value="" type="AssetReference" id="collisionMeshRef" name="Collision mesh ref"/>
+  <attribute value="0.5" type="real" id="friction" name="Friction"/>
+  <attribute value="0" type="real" id="restitution" name="Restitution"/>
+  <attribute value="0" type="real" id="linearDamping" name="Linear damping"/>
+  <attribute value="0" type="real" id="angularDamping" name="Angular damping"/>
+  <attribute value="1 1 1" type="float3" id="linearFactor" name="Linear factor"/>
+  <attribute value="0 0 0" type="float3" id="angularFactor" name="Angular factor"/>
+  <attribute value="false" type="bool" id="kinematic" name="Kinematic"/>
+  <attribute value="false" type="bool" id="phantom" name="Phantom"/>
+  <attribute value="false" type="bool" id="drawDebug" name="Draw Debug"/>
+  <attribute value="0 0 0" type="float3" id="linearVelocity" name="Linear velocity"/>
+  <attribute value="0 0 0" type="float3" id="angularVelocity" name="Angular velocity"/>
+  <attribute value="-1" type="int" id="collisionLayer" name="Collision Layer"/>
+  <attribute value="-1" type="int" id="collisionMask" name="Collision Mask"/>
+  <attribute value="0.5" type="real" id="rollingFriction" name="Rolling friction"/>
+  <attribute value="true" type="bool" id="useGravity" name="Use gravity"/>
+ </component>
+ <component typeId="27" type="ParticleSystem" sync="true" name="ContentCreatedEffect">
+  <attribute value="http://meshmoon.data.s3.amazonaws.com/app/content-tools/assets/smoke-ball.particle" type="AssetReference" id="particleRef" name="Particle ref"/>
+  <attribute value="false" type="bool" id="castShadows" name="Cast shadows"/>
+  <attribute value="false" type="bool" id="enabled" name="Enabled"/>
+  <attribute value="0" type="real" id="renderingDistance" name="Rendering distance"/>
+ </component>
+ <component typeId="31" type="Material" sync="false" name="CarryTransparentAvatar1">
+  <attribute value="" type="QVariantList" id="parameters" name="Parameters"/>
+  <attribute value="http://adminotech.data.s3.amazonaws.com/assets/static/frame/transparent-textured.material" type="string" id="inputMat" name="Input Material"/>
+  <attribute value="local://avatar1-transparent-textured.material" type="string" id="outputMat" name="Output Material"/>
+ </component>
+ <component typeId="7" type="SoundListener" sync="false">
+  <attribute value="true" type="bool" id="active" name="Active"/>
+ </component>
+ <component typeId="17" type="Mesh" sync="false">
+  <attribute value="0,-0.870000005,0,0,0,0,1,1,1" type="Transform" id="nodeTransformation" name="Transform"/>
+  <attribute value="" type="AssetReference" id="meshRef" name="Mesh ref"/>
+  <attribute value="" type="AssetReference" id="skeletonRef" name="Skeleton ref"/>
+  <attribute value="http://meshmoon.data.s3.amazonaws.com/avatars/girl/girl1.material" type="AssetReferenceList" id="materialRefs" name="Mesh materials"/>
+  <attribute value="0" type="real" id="drawDistance" name="Draw distance"/>
+  <attribute value="true" type="bool" id="castShadows" name="Cast shadows"/>
+  <attribute value="false" type="bool" id="useInstancing" name="Use instancing"/>
+ </component>
+ <component typeId="28" type="Highlight" sync="false" name="EcEditorHighlight">
+  <attribute value="true" type="bool" id="visible" name="Is visible"/>
+  <attribute value="0.300000012 0.5 0.100000001 0.5" type="Color" id="solidColor" name="Solid color"/>
+  <attribute value="1 1 1 0.5" type="Color" id="outlineColor" name="Outline color"/>
+ </component>
+</entity>
+</scene>

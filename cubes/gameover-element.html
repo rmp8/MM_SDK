@@ -1,0 +1,97 @@
+<polymer-element name="gameover-element" attributes="gameOverElement">
+    <template>
+        <style type="text/css">
+            #content {
+                height: 100%;
+                overflow-y: auto;
+            }
+            .title {
+                height: 50px;
+                padding-left: 10px;
+                padding-top: 5px;
+                background-color: #fff;
+                border-bottom: 1px solid rgb(179, 179, 179);
+                text-transform: uppercase;
+            }
+            .title-text {
+                padding-top: 10px;
+                margin-left: 0.5em;
+            }
+            :host {
+                top: 25;
+                left: 25;
+                min-width: 30px;
+				background-color: white;
+            }
+			paper-button[raised].colored {
+          		background: #4285f4;
+          		color: #fff;
+                padding: 0.5em 0.57em;
+                width: 9em;
+    		}
+            core-menu {
+                padding: 0.5em 0.57em;
+            }
+            paper-item {
+                font-size: 15px;
+                min-width: 100px;
+            }
+            core-item.core-selected {
+                color: red;
+            }
+        </style>
+				<!--<paper-shadow z="2"  animated vertical layout>   --> 
+                <!--<core-menu selected="0">-->
+    				<!--<paper-button raised on-click="{{ onRelocate }}">Relocate</paper-button><br>
+                    <paper-button raised on-click="{{ onDelete }}">Delete</paper-button>
+                </core-menu>-->
+                <!--<core-menu class="menu" selected="0" selectedItem="{{item}}">
+                    <core-item label="Relocate"></core-item>
+                    <core-item label="Delete"></core-item>
+                </core-menu>
+				</paper-shadow>-->
+        <paper-shadow z="2" fit></paper-shadow>
+
+        <div id="content">
+            <div layout vertical>
+              
+               <!-- Title -->
+               <div class="title">
+                   <div layout horizontal center justified>
+                        <!--<div layout horizontal>
+                            <core-item class="title-text">Info</core-item>
+                        </div>-->
+                        <div layout horizontal >
+                            <!--<paper-fab mini icon="info"  id="InfoBtn" on-tap="{{ onInfoClicked }}"></paper-fab>-->
+                            <paper-dialog id="gameOverDialog" class="gameOverElement" transition="core-transition-center" backdrop layered>
+                                <p>Game over!</p>
+                            </paper-dialog>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </template>
+<script>
+	Polymer('gameover-element', {
+        publish :
+        {
+        },
+
+        created : function()
+        {
+            this.gameOverElement = {};
+        },
+		
+        onInfoClicked : function()
+        {
+            this.$.gameOverDialog.toggle();
+        },
+    	
+	})
+</script>
+</polymer-element>

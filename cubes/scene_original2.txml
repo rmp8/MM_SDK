@@ -1,0 +1,71 @@
+<!DOCTYPE Scene>
+<scene>
+ <entity id="1" sync="true">
+  <component typeId="26" type="Name" sync="true">
+   <attribute value="env" type="string" id="name" name="Name"/>
+   <attribute value="" type="string" id="description" name="Description"/>
+   <attribute value="" type="string" id="group" name="Group"/>
+  </component>
+  <component typeId="12" type="WaterPlane" sync="true">
+   <attribute value="5000" type="int" id="xSize" name="X-size"/>
+   <attribute value="5000" type="int" id="ySize" name="Y-size"/>
+   <attribute value="10000" type="int" id="depth" name="Depth"/>
+   <attribute value="0.000000 0.000000 0.000000" type="float3" id="position" name="Position"/>
+   <attribute value="0.000000 0.000000 0.000000 1.000000" type="Quat" id="rotation" name="Rotation"/>
+   <attribute value="0.000200" type="real" id="scaleUfactor" name="U factor"/>
+   <attribute value="0.000200" type="real" id="scaleVfactor" name="V factor"/>
+   <attribute value="10" type="int" id="xSegments" name="Segments in x"/>
+   <attribute value="10" type="int" id="ySegments" name="Segments in y"/>
+   <attribute value="" type="string" id="materialName" name="Material"/>
+   <attribute value="Ogre Media:WaterPlane.material" type="AssetReference" id="materialRef" name="Material ref"/>
+   <attribute value="0.200000 0.400000 0.350000 1.000000" type="Color" id="fogColor" name="Fog color"/>
+   <attribute value="100.000000" type="real" id="fogStartDistance" name="Fog start dist."/>
+   <attribute value="2000.000000" type="real" id="fogEndDistance" name="Fog end dist."/>
+   <attribute value="3" type="int" id="fogMode" name="Fog mode"/>
+   <attribute value="0.001000" type="real" id="fogExpDensity" name="Fog exponential density"/>
+  </component>
+  <component typeId="10" type="Sky" sync="true">
+   <attribute value="Ogre Media:RexSkyBox.material" type="AssetReference" id="materialRef" name="Material"/>
+   <attribute value="" type="AssetReferenceList" id="textureRefs" name="Texture"/>
+   <attribute value="999.000000" type="real" id="distance" name="Distance"/>
+   <attribute value="0.000000 0.000000 0.000000 1.000000" type="Quat" id="orientation" name="Orientation"/>
+   <attribute value="true" type="bool" id="drawFirst" name="Draw first"/>
+   <attribute value="true" type="bool" id="enabled" name="Enabled"/>
+  </component>
+ </entity>
+ <entity id="2" sync="true">
+  <component typeId="26" type="Name" sync="true">
+   <attribute value="MyApplication" type="string" id="name" name="Name"/>
+   <attribute value="" type="string" id="description" name="Description"/>
+   <attribute value="" type="string" id="group" name="Group"/>
+  </component>
+  <component typeId="5" type="Script" sync="true" name="webrocket">
+   <attribute value="app-web-rocket.webrocketjs" type="AssetReferenceList" id="scriptRef" name="Script ref"/>
+   <attribute value="true" type="bool" id="runOnLoad" name="Run on load"/>
+   <attribute value="1" type="int" id="runMode" name="Run mode"/>
+   <attribute value="" type="string" id="applicationName" name="Script application name"/>
+   <attribute value="" type="string" id="className" name="Script class name"/>
+  </component>
+  <component typeId="5" type="Script" sync="true">
+   <attribute value="app-server-and-rocket.js" type="AssetReferenceList" id="scriptRef" name="Script ref"/>
+   <attribute value="true" type="bool" id="runOnLoad" name="Run on load"/>
+   <attribute value="0" type="int" id="runMode" name="Run mode"/>
+   <attribute value="" type="string" id="applicationName" name="Script application name"/>
+   <attribute value="" type="string" id="className" name="Script class name"/>
+  </component>
+ </entity>
+ <entity id="3" sync="true">
+  <component temporary="false" typeId="26" type="Name" sync="true">
+   <attribute value="RocketEnvironment" type="string" id="name" name="Name"/>
+   <attribute value="" type="string" id="description" name="Description"/>
+   <attribute value="" type="string" id="group" name="Group"/>
+  </component>
+  <component temporary="false" typeId="8" type="EnvironmentLight" sync="true" name="RocketEnvironmentLight">
+   <attribute value="0.639000 0.639000 0.639000 1.000000" type="Color" id="sunColor" name="Sunlight color"/>
+   <attribute value="0.364000 0.364000 0.364000 1.000000" type="Color" id="ambientColor" name="Ambient light color"/>
+   <attribute value="-1.000000 -1.000000 -1.000000" type="float3" id="sunDirection" name="Sunlight direction vector"/>
+   <attribute value="true" type="bool" id="sunCastShadows" name="Sunlight cast shadows"/>
+   <attribute value="1.000000" type="real" id="brightness" name="Brightness"/>
+  </component>
+ </entity>
+</scene>

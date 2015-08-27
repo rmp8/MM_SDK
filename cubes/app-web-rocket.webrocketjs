@@ -1,0 +1,343 @@
+//cubes
+
+
+function countDown(options) 
+{
+    var timer,
+    instance = this,
+    seconds = options.seconds || 10,
+    updateStatus = options.onUpdateStatus || function () {},
+    counterEnd = options.onCounterEnd || function () {};
+
+    function decrementCounter() {
+    updateStatus(seconds);
+    if (seconds === 0) 
+    {
+        counterEnd();
+        instance.stop();
+    }
+    seconds--;
+    }
+
+    this.start = function () {
+    clearInterval(timer);
+    timer = 0;
+    seconds = options.seconds;
+    timer = setInterval(decrementCounter, 1000);
+    };
+
+    this.stop = function () {
+    clearInterval(timer);
+    };
+}
+
+var _MSG_INTRODUCTION    = "MSG_Action_Introduction";
+
+var cubeCount = 0;
+
+var WebRocketApplication = IApplication.$extend(
+{
+    __init__ : function()
+    {
+        this.$super("testing2");
+
+        
+
+//        this.state =
+//        {
+//            camera : {}
+//        };
+
+        // Move initial camera 
+        
+//        var activeCamera = Tundra.renderer.activeCameraEntity();
+//        if (activeCamera != null && activeCamera.placeable != null)
+//        {
+            //activeCamera.placeable.parentRef = "Eater";
+//            var t = activeCamera.placeable.transform;
+//            t.pos.set(-85, 25, 28);
+//            t.rot.set(-12, -80, 0);
+//            activeCamera.placeable.transform = t;
+
+            //var cameraTransform = activeCamera.placeable.transform;
+            //cameraTransform.pos = new float3(-60, 4, 25); //eater -60, 4,25
+            //cameraTransform.rot.y = 180; //180;
+            //activeCamera.placeable.transform = cameraTransform;
+
+            //cameraTransform.pos = new float3(-60, 4, 25); //eater -60, 4,25
+            //    cameraTransform.rot.y = 180; //180;
+            /*
+            var t = activeCamera.placeable.transform;
+            t.pos.set(-21, 22, 14); //t.pos.set(-21, 22, 14);
+            t.rot.set(-12, -56, 0); //t.rot.set(-12, -50, 0);
+            activeCamera.placeable.transform = t;
+            */
+            //this.onActiveCameraChanged(activeCamera.camera);
+//        }
+        //this.subscribeEvent(Tundra.renderer.onActiveCameraChanged(this, this.onActiveCameraChanged));
+
+        // Run RTS camera application
+        //this.rts = {};
+        //this.rts.ent = Tundra.client.runApplication("RTS", "meshmoon-applications://meshmoon/rts-camera/rts-camera.webrocketjs");
+        //this.rts.ent.script.onScriptStarted(function(entity, component, scriptAsset, app) {
+        //    this.rts.app = app;
+        //}.bind(this));
+
+        //this.cameraEnt = Tundra.scene.CreateLocalEntity(["Name","Camera","Placeable"]);
+
+
+
+        //Initialize data objects
+        this.data = {};
+        console.log('Initialize data objects');
+
+
+/*
+        var _loadPolymerElements = IApplication.loadDependencies(this, "menu-element.html");
+        _loadPolymerElements.done(function(v){
+            console.log('polymer element(s) loaded! ');
+            this.selectionMenu = document.createElement("menu-element");
+            this.selectionMenu.hidden=true;
+            Tundra.ui.addToCorner(this.selectionMenu, Tundra.ui.$class.Corner.BottomRight, Tundra.ui.$class.Position.Bottom);
+            console.log('...!!');
+        }.bind(this));
+*/
+
+
+
+        //Register raw input context and connect KeyPressed and KeyReleased
+//        this.data.inputContext = Tundra.input.RegisterInputContextRaw("EaterInput", 100);
+        console.log('input');
+        //this.data.inputContext.KeyPressed.connect(this, this.keyPressed);
+        //this.data.inputContext.KeyReleased.connect(this, this.keyReleased);
+        //this.subscribeEvent(Tundra.input.onKeyPress(this, this.onKeyPress));
+        //this.subscribeEvent(Tundra.input.onKeyRelease(this, this.onKeyRelease));
+        console.log('keypress&release subscribeEvents');
+        //this.inputContext.KeyPress.connect(this, this.onKeyPress);
+        //this.inputContext.KeyRelease.connect(this, this.onKeyRelease);
+        
+        
+        // Monitor entity mouse clicks on hover
+        this.subscribeEvent(Tundra.input.onMousePress(this, this.onMousePress));
+        //this.subscribeEvent(Tundra.input.onMouseMove(this, this.onMouseMove));
+        //this.subscribeEvent(Tundra.input.onButtonClick(this, this.onButtonClick));
+        //this.subscribeEvent(Tundra.input.onCubeRelocate(this, this.onCubeRelocate));
+        //this.subscribeEvent(Tundra.input.onCubeDelete(this, this.onCubeDelete));
+        /*
+        me.Action("buttonclick").Triggered.connect(this, this.onButtonClick);
+        me.Action("cuberelocate").Triggered.connect(this, this.onCubeRelocate);
+        me.Action("cubedelete").Triggered.connect(this, this.onCubeDelete);*/
+
+        // Listen for client/server sent entity actions
+        this.entity.onEntityAction(this, this.onEntityAction);
+
+        // Introduce client app to the server
+        this.entity.exec(EntityAction.Server, _MSG_INTRODUCTION);
+        
+
+
+        this.initUi();
+
+        
+        var _loadPolymerElements = IApplication.loadDependencies(this,
+                "cube-element.html"//, "countdown-element.html"
+            ).done(function(v) {
+                //this.timing.async("delayed.start", this.start, 1000);
+                console.log('polymer element(s) loaded!');
+                this.infoElement = document.createElement("cube-element");
+                //this.countElement = document.createElement("countdown-element");
+                //this.infoElement.hidden = true;
+                //this.countElement.hidden = true;
+                Tundra.ui.addToCorner(this.infoElement, Tundra.ui.$class.Corner.BottomRight, Tundra.ui.$class.Position.Bottom);
+                //Tundra.ui.addToCorner(this.countElement, Tundra.ui.$class.Corner.TopRight, Tundra.ui.$class.Position.Top);
+                console.log('...!!!');
+            }.bind(this));
+    },
+
+
+
+    /*
+        Script destroy/unload handler. Called automatically 
+        by the framework when the application is closed.
+    */
+    onScriptDestroyed : function()
+    {
+        this.log.info("Shutting down");
+
+        // Clean up any UI created by this application.
+        if (this.ui && this.ui.welcome)
+            this.ui.welcome.remove();
+        this.ui = null;
+    },
+
+    initUi : function()
+    {
+        this.ui = {};
+        this.ui.baseCSS = {
+            "position" : "absolute",
+            "padding"  : 10,
+            "top" : 25,
+            "left" : 25,
+            "font-family" : "RobotoDraft, Arial",
+            "color" : "white",
+            "background-color" : "rgba(8,149,195,0.8)"
+        };
+
+        this.cubeButton = $("<button/>", { text : "Add cubes and start", id : "cubeButton"});
+
+        
+        var that = this;
+        this.cubeButton.click(function( event ) 
+        {
+            //event.preventDefault();
+            console.log("BUTTON CLICKED");
+            //onButtonClick();
+            
+            var myCounter = new countDown({  
+                seconds:30,  // number of seconds to count down
+
+                onUpdateStatus: function(sec)
+                {
+                    console.log(sec);
+                }, // callback for each second
+
+                onCounterEnd: function(){ alert('Game over!');} // final action
+            }); 
+
+            that.entity.exec(EntityAction.Server, "buttonclick");
+
+            /*
+            var _loadPolymerElements2 = IApplication.loadDependencies(that,
+                "countdown-element.html"
+            ).done(function(v) {
+                //this.timing.async("delayed.start", this.start, 1000);
+                console.log('polymer element(s) loaded!');
+                that.countElement = document.createElement("countdown-element");
+                //this.countElement.hidden = true;
+                Tundra.ui.addToCorner(that.countElement, Tundra.ui.$class.Corner.TopRight, Tundra.ui.$class.Position.Top);
+                console.log('count...!!!');
+            }.bind(that));*/
+
+
+            myCounter.start();
+            
+        });
+        
+        this.cubeButton.css(this.ui.baseCSS);
+        this.cubeButton.hide();
+
+        this.framework.ui.addWidgetToScene(this.cubeButton);
+        //this.framework.ui.addWidgetToScene(this.mouseMenu);
+        this.cubeButton.fadeIn(5000);
+
+
+    },
+    
+    keyPressed: function(keyEvent)
+    {
+        if(keyEvent.IsRepeat())
+            return;
+        
+        if(keyEvent.keyCode == Qt.Key_W)
+            me.Exec(2, _MSG_MOVE, "forward");
+        else if(keyEvent.keyCode == Qt.Key_S)
+            me.Exec(2, _MSG_MOVE, "backward");
+        else if(keyEvent.keyCode == Qt.Key_A)
+            me.Exec(2, _MSG_MOVE, "left");
+        else if(keyEvent.keyCode == Qt.Key_D)
+            me.Exec(2, _MSG_MOVE, "right");
+            
+        //if(keyEvent.keyCode == Qt.Key_N)
+         //   me.Exec(2, _MSG_NEW_CUBE);
+    },
+    
+    keyReleased: function(keyEvent)
+    {
+        if(keyEvent.keyCode == Qt.Key_W)
+            me.Exec(2, _MSG_MOVE_STOP, "forwardStop");
+        else if(keyEvent.keyCode == Qt.Key_S)
+            me.Exec(2, _MSG_MOVE_STOP, "backwardStop");
+        else if(keyEvent.keyCode == Qt.Key_A)
+            me.Exec(2, _MSG_MOVE_STOP, "leftStop");
+        else if(keyEvent.keyCode == Qt.Key_D)
+            me.Exec(2, _MSG_MOVE_STOP, "rightStop");
+    },
+
+
+    onSceneResized: function(rect)
+    {
+        
+    },
+
+/*    createCamera: function(parent)
+    {        
+        console.log("createCamera function");
+        //if(!scene.EntityByName("Camera"))
+        //{
+            var cameraEntity = Tundra.scene.CreateLocalEntity(Tundra.scene.NextFreeId(), ["Name", "Camera", "Placeable"]);
+            //var cameraEntity = Tundra.renderer.activeCameraEntity();
+            
+            if(cameraEntity != null)
+            {
+                cameraEntity.placeable.parentRef = "Eater";
+                cameraEntity.name = "Camera";
+                console.log("camera: " +cameraEntity.name);
+                var cameraTransform = cameraEntity.placeable.transform;
+                cameraTransform.pos = new float3(-85, 25, 28); //eater -60, 4,25
+                cameraTransform.rot.y = 0; //180;
+                cameraEntity.placeable.transform = cameraTransform;
+                
+                cameraEntity.temporary = true;                
+                cameraEntity.camera.SetActive(); //true
+                
+            }
+            else 
+                Log("Camera not found");            
+        //}
+    },*/
+
+
+
+    onMousePress : function(event)    
+    {
+        
+    
+        // Raycast to our cube, if hit, send entity action to the server.
+        var result = this.framework.renderer.raycast(); //framework
+        if (result.entity != null && result.entity.name == "bluecube")
+        {
+            this.entity.exec(EntityAction.Server, "cuberelocate", [result.entity.id]);
+            //this.entity.exec(EntityAction.Server, "cubedelete", [result.entity.id]);
+            cubeCount++;
+            console.log("cubeCount "+cubeCount);
+        }
+            //this.entity.exec(EntityAction.Server, "cuberelocate", [result.entity.id]);
+
+        if (result.entity != null && result.entity.name == "redcube")
+        {
+            // TODO - Game over
+            
+        }
+
+        else
+        {
+           
+        }
+
+
+    },
+
+        
+
+    
+    onEntityAction : function (entityAction)
+    {
+        if (entityAction.name === _MSG_INTRODUCTION)
+        {
+            this.log.info("Server messaged it is ready");
+        }
+    }
+});
+
+// Start the application by instantiating it
+var webRocketApplication = new WebRocketApplication();
