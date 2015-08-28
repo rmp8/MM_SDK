@@ -201,7 +201,7 @@ var WebRocketApplication = IApplication.$extend(
                     console.log(sec);
                 }, // callback for each second
 
-                onCounterEnd: function(){ alert('Game over!');} // final action
+                onCounterEnd: function(){ alert('Game over! Cubes: '+cubeCount);} // final action
             }); 
 
             that.entity.exec(EntityAction.Server, "buttonclick");
